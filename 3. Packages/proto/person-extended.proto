@@ -1,0 +1,52 @@
+// Syntax used for this file is V3
+syntax = "proto3";
+
+package person;
+
+// Needs relative path from root of the project
+import "date.proto";
+
+/*
+Person is used to identify users acrpss the system 
+*/
+message Person {
+    int32 age = 1; // Number is the TAG
+    string first_name = 2;
+    string last_name = 3;
+    bytes small_picture = 4;
+    bool is_profile_verified = 5;
+    float height = 6;
+
+    repeated string phone_numbers = 7;
+
+    // Enums
+    enum EyeColor {
+        UNKNOWN_EYE_COLOR = 0;
+        EYE_GREEN = 1;
+        EYE_BROWN = 2;
+        EYE_BLUE = 3;
+        EYE_BLACK = 4;
+        EYE_GRAY = 5;
+    }
+
+    EyeColor eye_color = 8;
+
+    // Date lives in my.date package
+    my.date.Date birthday = 9;
+
+    message Address {
+        string door_number = 1;
+        string area = 2;
+        string city = 3;
+        string state = 4;
+        string country = 5;
+        string zip_code = 6;
+    }
+
+    repeated Address addresses = 10;
+}
+/* 
+    Tag 1-15 => 1 byte
+    Tag 16-2047 => 2 bytes
+    There are some reserved tags
+*/

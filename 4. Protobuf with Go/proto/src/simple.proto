@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+message Simple {
+    int32 id = 1;
+    bool is_good = 2;
+    string name = 3;
+    repeated int32 score = 4;
+}
